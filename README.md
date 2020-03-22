@@ -8,7 +8,7 @@ start docker containers
 - `docker-compose up -d`
 
 Log into the Django docker and run the migrations
-- `docker exec -it real-time-chat-api_web_1 bash`
+- `docker exec -it real-time-chat-api-docker_web_1 bash`
 - `python manage.py makemigrations`
 - `python manage.py migrate`
 - `exit`
