@@ -79,9 +79,13 @@ WSGI_APPLICATION = 'chat.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'DATABASE_URL': 'postgres:///real_time_chat',
+        # 'DATABASE_URL': 'postgres:///real_time_chat',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'mysecretpassword',
+        'HOST': 'db',
+        'PORT': 5432,
         'ATOMIC_REQUESTS': True,
-        'NAME': 'real_time_chat'
     }
 }
 
@@ -127,14 +131,14 @@ STATIC_URL = '/static/'
 
 # Channel layer definitions
 # http://channels.readthedocs.org/en/latest/deploying.html#setting-up-a-channel-backend
- 
+
 ASGI_APPLICATION = "chat.channels_app.routing.application"
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": ['redis://localhost:6379/4']
+            "hosts": ['redis://redis:6379/4']
         }
     },
 }
